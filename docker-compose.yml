@@ -5,7 +5,7 @@ services:
       context: ./client
       dockerfile: Dockerfile.react
     ports:
-      - "8001:8001"
+      - "8001:3000"   #8001 of the host to 3000 if the container
 
   api:
     build: 
