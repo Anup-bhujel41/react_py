@@ -13,8 +13,11 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
+
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 # Expose the port your Python backend will run on (e.g., 5000)
 EXPOSE 8000
 
 # Define the command to run your Python backend
-CMD ["python", "app.py"]
+CMD ["python", "manage.py",]
