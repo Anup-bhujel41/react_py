@@ -132,6 +132,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        #change name and engine if using other db like mysql 
+        #port host shotd be aaded
+        
     }
 }
 
