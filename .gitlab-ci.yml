@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  AWS_DEFAULT_REGION: "your_aws_region"
+  AWS_ACCESS_KEY_ID: "your_access_key_id"
+  AWS_SECRET_ACCESS_KEY: "your_secret_access_key"
+  ECR_REPO_URL: "your_ecr_repository_url"
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | docker login -u AWS --password-stdin "https://$ECR_REPO_URL"
+    - docker build -t "$ECR_REPO_URL:$CI_COMMIT_SHORT_SHA" .
+    - docker push "$ECR_REPO_URL:$CI_COMMIT_SHORT_SHA"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to ECR..."
+    # Add deployment steps here if needed
+  only:
+    - master  # Deploy only on changes to the master branch
