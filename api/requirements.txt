@@ -1,4 +1,37 @@
-﻿asgiref==3.5.2
+﻿# asgiref==3.5.2
+# backports.zoneinfo==0.2.1;python_version<"3.9"
+# Django==4.0.4
+# django-ckeditor==6.4.1
+# django-cors-headers==3.12.0
+# django-filebrowser==4.0.1
+# django-filter==21.1
+# django-grappelli==3.0.3
+# django-js-asset==2.0.0
+# django-ratelimit==3.0.1
+# django-rest-framework==0.1.0
+# django-tinymce==3.4.0
+# django-widget-tweaks==1.4.12
+# djangorestframework==3.13.1
+# djangorestframework-simplejwt==5.2.0
+# joblib==1.1.0
+# numpy==1.26.4
+# pandas==2.2.2
+# Pillow
+# PyJWT==2.4.0
+# python-dateutil==2.8.2
+# python-decouple==3.6
+# pytz==2022.1
+# scikit-learn==1.4.2
+# scipy
+# six==1.16.0
+# sqlparse==0.4.2
+# threadpoolctl==3.1.0
+# timedelta==2020.12.3
+# tzdata>=2022.7
+
+
+
+asgiref==3.5.2
 backports.zoneinfo==0.2.1;python_version<"3.9"
 Django==4.0.4
 django-ckeditor==6.4.1
@@ -13,19 +46,30 @@ django-tinymce==3.4.0
 django-widget-tweaks==1.4.12
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.2.0
-joblib==1.1.0
-numpy
-pandas
+
+# Updated joblib version to satisfy scikit-learn>=1.4.2 dependency
+joblib>=1.2.0
+
+numpy==1.26.4
+pandas==2.2.2
 Pillow
+
 PyJWT==2.4.0
 python-dateutil==2.8.2
 python-decouple==3.6
-pytz==2022.1
-scikit-learn
-scipy
-six==1.16.0
 
+# Updated pytz to latest to avoid conflicts, remove pinning if possible
+pytz>=2023.3
+
+# scikit-learn 1.4.2 requires joblib>=1.2.0 and threadpoolctl (already present)
+scikit-learn==1.4.2
+scipy
+
+six==1.16.0
 sqlparse==0.4.2
 threadpoolctl==3.1.0
+
 timedelta==2020.12.3
-tzdata==2022.1
+
+# tzdata version to satisfy pandas>=2.2.2
+tzdata>=2022.7
